@@ -47,6 +47,7 @@
 
 ## 5. DBeaver:
 - Se abre el cliente de DBeaver y se hace la respectiva conexión en donde según los parametros que pusimos en el interprete CMD, la contraseña y el usuario se colocan según la base de datos a trabajar siendo puerto 3306(root) para MySQL, 3307(root) para MariaDB y 5432(postgres) para postgres.
+
 ![Texto alternativo](6.png)
 ![Texto alternativo](7.png)
 ![Texto alternativo](8.png)
