@@ -233,7 +233,8 @@ Esto ya siendo una base de datos más ordenada, eficiente y fácil de mantener, 
 
 5. Reto 5 – Modelo E-R final:
 
-![Imagen Diagrama E-R final de la base de datos con las tablas normalizadas](./SEMANA 2 TRABAJOS/Diagrama E-R final.png)
+![Diagrama E-R Final:](DiagramaER.png)
+
 
 
 ### Modelo E-R final
