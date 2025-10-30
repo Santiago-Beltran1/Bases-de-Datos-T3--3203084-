@@ -277,7 +277,9 @@ Y así llegamos a tener una base de datos más ordenada, consistente y fácil de
 Este mismo permite registrar los pacientes, médicos, consultorios y asignar turnos con la fecha y hora en el que se saca el turno.
 El diseño se creo con la normalización hasta la 3FN para la misma integridad, evitando redundancias y facilitando la administración de los turnos para los pacientes.
 ### Diagrama E-R
-![Diagrama E-R del proyecto:](ProtectoE-R.png)
+
+![Diagrama E-R del proyecto:](ProyectoE-R.png)
+
 ### Reglas de negocio y justificación
 
 **Reglas de Negocio:**
