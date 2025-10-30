@@ -86,7 +86,7 @@ La desnormalización en una base de datos sería justificable más que todo cuan
 
 1. Reto 1 – Diagnóstico inicial: 
 
-Análisis de la tabla furniture_sales:
+**Análisis de la tabla furniture_sales:**
 Al copiar y ejecutar el contenido del archivo con la tabla furniture_sales podemos ver que presenta varias anomalías y que es una base de datos que no cuenta con las reglas de las bases de datos normalizadas pues esta contiene varios datos y columnas redundantes que impiden incluso que se puedan realizar acciones al intentar realizar alguna acción en la tabla.
 Entre las anomalías podemos encontrar:
 
@@ -232,22 +232,76 @@ Y así esta estructura no tendría dependencias parciales (ya eliminadas en 2FN)
 Esto ya siendo una base de datos más ordenada, eficiente y fácil de mantener, con total independencia entre las entidades y sin redundancia de datos.
 
 5. Reto 5 – Modelo E-R final:
+### Modelo E-R final
 
 ![Diagrama E-R Final:](DiagramaER.png)
 
+---
 
-
-### Modelo E-R final
-(Incluir imagen o enlace)
 ### Reglas de negocio
-(Enumerar reglas derivadas)
+
+Pues según ya todo lo hecho en las tablas ya normalizadas las reglas de ese negocio que aplicarian serían:
+
+1. Cada cliente puede realizar uno o varios pedidos, pero cada pedido pertenece a un solo cliente.
+
+2. Cada pedido puede incluir uno o varios productos, y un mismo producto puede aparecer en distintos pedidos.
+
+3. Los productos tienen un precio y nombre únicos identificados por su product_id.
+
+4. No se pueden registrar pedidos sin cliente ni productos asociados.
+
+5. La cantidad de cada producto en un pedido se controla mediante la tabla order_items, que representa la relación entre pedidos y productos.
+
+6. La eliminación de un cliente o pedido elimina automáticamente sus pedidos o detalles asociados (gracias a las claves foráneas con la integridad referencial).
+
+---
+
 ### Justificación del diseño
-(Explicar decisiones de normalización)
+
+Aunque ya se explico en los retos el porque de las tablas o las desiciones tomadas ya más sintetizadamente todo ese diseño final se basa en las tres formas normales (1FN, 2FN y 3FN) para eliminar redundancias y dependencias que se encontraban en la tabla original del archivo furniture_sales, en donde:
+
+- En la 1FN, se eliminaron los campos repetidos (como item_1_name, item_2_price, etc.), dejando atributos atómicos.
+
+- En la 2FN, se separaron las dependencias parciales como la información del cliente se movió a una tabla independiente (customers), los productos a products, y los pedidos a orders.
+
+- Y en la 3FN, se eliminaron las dependencias transitivas como los datos del cliente dependían indirectamente del pedido, quedando cada atributo dependiente solo de su clave primaria.
+
+Y así llegamos a tener una base de datos más ordenada, consistente y fácil de mantener justamente aplicando la integridad, eliminación de redundancia y mayor flexibilidad para futuras consultas o actualizaciones en la base de datos y tablas del archivo.
+
+---
 
 ## Parte 3: Proyecto personal
 ### Título y descripción
-(Breve resumen)
+**Título:** Gestión de Turnos en una Clínica
+**Descripción:** Este proyecto representa un sistema de una base de datos para la gestión de turnos médicos para una clínica.
+Este mismo permite registrar los pacientes, médicos, consultorios y asignar turnos con la fecha y hora en el que se saca el turno.
+El diseño se creo con la normalización hasta la 3FN para la misma integridad, evitando redundancias y facilitando la administración de los turnos para los pacientes.
 ### Diagrama E-R
-(Imagen o enlace)
+![Diagrama E-R del proyecto:](ProtectoE-R.png)
 ### Reglas de negocio y justificación
-(Análisis final)
+
+**Reglas de Negocio:**
+
+1. Cada paciente puede tener varios turnos, pero un turno pertenece solo a un paciente.
+
+2. Cada médico puede atender varios turnos, pero cada turno tiene un único médico asignado.
+
+3. Un consultorio puede ser usado en varios turnos, pero solo un turno a la vez.
+
+4. No se puede registrar un turno sin paciente, médico y consultorio válidos.
+
+5. Los datos de pacientes y médicos deben mantenerse actualizados, evitando duplicados.
+
+6. Al eliminar un paciente, se deben eliminar también sus turnos asociados. 
+
+**Justificación:** 
+
+Este proyecto de una base de datos sobre la Gestión de turnos en una clínica aplica las tres primeras formas normales (1FN, 2FN y 3FN) en donde se intenta aplicar esa estructura lógica, coherente y sin redundancias en las tablas de la base de datos.
+
+- En la 1FN se eliminaron los campos multivaluados y no atómicos en donde cada atributo almacena un solo valor, por ejemplo, cada paciente tiene un único teléfono y correo, y cada turno una sola fecha y hora.
+
+- En la 2FN se eliminaron las dependencias parciales en el cual los datos que dependen directamente de una sola entidad se ubicaron en tablas independientes: pacientes guarda la información personal, medicos contiene los datos profesionales, consultorios almacena la ubicación y número de sala y turnos relaciona pacientes, médicos y consultorios mediante claves foráneas.
+
+- En la 3FN se eliminaron las dependencias transitivas como en los datos del médico (nombre, especialidad, teléfono) dependen solo de id_medico, no del turno, por lo que se mantienen en su tabla igualmente con la información de pacientes y consultorios.
+
+Y así se aplica una normalización en este proyecto donde se intenta ordenar de la mejor manera posible las tablas de la base de datos en donde se aplican desde la 1FN hasta la 3FN y se crea un sistema más eficiente o almenos ordenado y sin anomalias que causan generalmente la no normalización.
